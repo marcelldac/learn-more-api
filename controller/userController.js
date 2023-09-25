@@ -1,11 +1,15 @@
 const { PrismaClient } = require('@prisma/client');
+const bcrypt = require('bcrypt');
 
 const prisma = new PrismaClient();
 
 //#region Create User
 
 exports.create = async (req, res) => {
-  const { name, email, password, telefone, cpf } = req.body;
+  let { name, email, password, telefone, cpf } = req.body;
+
+  password = await bcrypt.hash(password, 8);
+
   try {
     const user = await prisma.user.create({
       data: {
@@ -106,14 +110,6 @@ exports.delete = async (req, res) => {
   await prisma.user.delete({ where: { id: newId } });
 
   return res.status(204).json({ msg: 'Usuário Removido' });
-}
-
-//#endregion
-
-//#region Health Check
-
-exports.health = (req, res) => {
-  res.status(200).send('Ok');
 }
 
 //#endregion
