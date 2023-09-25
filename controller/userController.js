@@ -6,16 +6,21 @@ const prisma = new PrismaClient();
 
 exports.create = async (req, res) => {
   const { name, email, password, telefone, cpf } = req.body;
-  const user = await prisma.user.create({
-    data: {
-      name,
-      email,
-      password,
-      telefone,
-      cpf
-    },
-  });
-  return res.status(201).json(user);
+  try {
+    const user = await prisma.user.create({
+      data: {
+        name,
+        email,
+        password,
+        telefone,
+        cpf
+      },
+    });
+    return res.status(201).json({ msg: user });
+  } catch (err) {
+    return res.status(500).json({ msg: err });
+  }
+
 }
 
 //#endregion
@@ -100,7 +105,7 @@ exports.delete = async (req, res) => {
 
   await prisma.user.delete({ where: { id: newId } });
 
-  return res.status(200).json({ msg: 'Usuário Removido' });
+  return res.status(204).json({ msg: 'Usuário Removido' });
 }
 
 //#endregion
