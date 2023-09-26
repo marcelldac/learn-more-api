@@ -1,14 +1,14 @@
-# Rodar o app:
+# Rodar o servidor:
 
 ```bash
-yarn / npm i / npm install
+npm i
 ```
 
 ```bash
-yarn dev / npm run dev
+npm run dev
 ```
 
-# Credenciais do db
+# Credenciais do db:
 
 - Crie um arquivo '.env' na pasta root
 
@@ -18,3 +18,9 @@ yarn dev / npm run dev
 DATABASE_URL="postgresql://<user>:<pass>@<server>:<port>/<db_name>?schema=<shema>"
 ```
 ex: DATABASE_URL="postgresql://postgres:postgres@localhost:5432/mydb?schema=public"
+
+# Iniciar o prisma:
+
+```bash
+npx prisma init
+```
