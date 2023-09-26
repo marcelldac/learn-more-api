@@ -14,16 +14,14 @@ exports.read = async (req, res) => {
   });
 
   if (user === null) {
-    return res.status(403).json({ msg: "Usuário ou senha incorreta." });
+    return res.json({ msg: "Usuário ou senha incorreta." });
   }
 
-  if (!(await bcrypt.compare(password, user.password, null))) {
-    return res.status(403).json({ msg: 'Usuário ou senha incorreta.' })
+  if (!(bcrypt.compare(password, user.password, null))) {
+    return res.json({ msg: 'Usuário ou senha incorreta.' });
   }
 
-  return res.status(200).json({ msg: 'Usuário Logado' })
+  return res.status(200).json({ msg: 'Ok' });
 };
-
-
 
 //#endregion
