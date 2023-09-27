@@ -17,7 +17,8 @@ exports.create = async (req, res) => {
         email,
         password,
         telefone,
-        cpf
+        cpf,
+        hierarchy: 0
       },
     });
     return res.status(201).json({ msg: user });
