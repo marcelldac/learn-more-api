@@ -14,11 +14,13 @@ exports.read = async (req, res) => {
   });
 
   if (user === null) {
-    return res.json({ msg: "Usuário ou senha incorreta." });
+    return res.json({ msg: "Credenciais Inválidas." });
   }
 
-  if (!(await bcrypt.compare(password, user.password, null))) {
-    return res.json({ msg: 'Usuário ou senha incorreta.' });
+  const match = await bcrypt.compare(password, user.password, null);
+
+  if (!match) {
+    return res.json({ msg: 'Credenciais Inválidas' });
   }
 
   return res.status(200).json({ msg: 'Ok' });
