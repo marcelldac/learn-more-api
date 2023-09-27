@@ -17,7 +17,7 @@ exports.read = async (req, res) => {
     return res.json({ msg: "Usuário ou senha incorreta." });
   }
 
-  if (!(bcrypt.compare(password, user.password, null))) {
+  if (!(await bcrypt.compare(password, user.password, null))) {
     return res.json({ msg: 'Usuário ou senha incorreta.' });
   }
 
