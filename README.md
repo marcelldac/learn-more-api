@@ -22,5 +22,5 @@ ex: DATABASE_URL="postgresql://postgres:postgres@localhost:5432/mydb?schema=publ
 # Iniciar o prisma:
 
 ```bash
-npx prisma init
+npx prisma generate
 ```
