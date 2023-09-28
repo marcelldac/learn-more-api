@@ -10,6 +10,16 @@ exports.create = async (req, res) => {
 
   password = await bcrypt.hash(password, 8);
 
+  emailInUse = await prisma.user.findUnique({
+    where: {
+      email
+    }
+  });
+
+  if (emailInUse != null) {
+    return res.status(403).send();
+  }
+
   try {
     const user = await prisma.user.create({
       data: {
@@ -23,9 +33,8 @@ exports.create = async (req, res) => {
     });
     return res.status(201).json({ msg: user });
   } catch (err) {
-    return res.status(403).json({ msg: err });
+    return res.status(500).json({ msg: err });
   }
-
 }
 
 //#endregion
