@@ -21,11 +21,12 @@ model User {
 }
 
 model Teacher {
-  id        Int        @id @default(autoincrement())
+  id        Int     @id @default(autoincrement())
   name      String
-  email     String     @unique
+  email     String  @unique
   password  String
-  subjects  Subjects[]
+  subjects  Subject @relation(fields: [subjectId], references: [id])
+  subjectId Int     @unique
   hierarchy Int
 }
 
@@ -37,9 +38,8 @@ model Coordinator {
   hierarchy Int
 }
 
-model Subjects {
-  id        Int     @id @default(autoincrement())
-  name      String
-  teacher   Teacher @relation(fields: [subjectId], references: [id])
-  subjectId Int
+model Subject {
+  id      Int      @id @default(autoincrement())
+  name    String
+  teacher Teacher?
 }
