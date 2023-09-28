@@ -23,7 +23,7 @@ exports.create = async (req, res) => {
     });
     return res.status(201).json({ msg: user });
   } catch (err) {
-    return res.status(500).json({ msg: err });
+    return res.status(403).json({ msg: err });
   }
 
 }
