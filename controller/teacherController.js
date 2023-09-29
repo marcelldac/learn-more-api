@@ -6,13 +6,16 @@ const prisma = new PrismaClient();
 //#region Create Teacher
 
 exports.create = async (req, res) => {
-  let { name, email, password } = req.body;
+  let { name, email, password, pubs } = req.body;
 
   password = await bcrypt.hash(password, 8);
 
   emailInUse = await prisma.teacher.findUnique({
     where: {
       email
+    },
+    include: {
+      pubs: true
     }
   });
 
@@ -26,7 +29,7 @@ exports.create = async (req, res) => {
         name,
         email,
         password,
-        hierarchy: 1
+        hierarchy: 1,
       },
     });
     return res.status(201).json({ msg: teacher });
@@ -40,7 +43,11 @@ exports.create = async (req, res) => {
 //#region Read Teacher
 
 exports.read = async (req, res) => {
-  const teachers = await prisma.teacher.findMany();
+  const teachers = await prisma.teacher.findMany({
+    include: {
+      pubs: true
+    },
+  });
   res.status(200).json({ teachers });
 }
 
