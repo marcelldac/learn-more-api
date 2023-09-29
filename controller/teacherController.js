@@ -6,7 +6,7 @@ const prisma = new PrismaClient();
 //#region Create Teacher
 
 exports.create = async (req, res) => {
-  let { name, email, password, pubs } = req.body;
+  let { name, email, password } = req.body;
 
   password = await bcrypt.hash(password, 8);
 
