@@ -21,11 +21,11 @@ model User {
 }
 
 model Teacher {
-  id        Int      @id @default(autoincrement())
+  id        Int       @id @default(autoincrement())
   name      String
-  email     String   @unique
+  email     String    @unique
   password  String
-  subject   Subject?
+  subject   Subject[]
   pubs      Pubs[]
   hierarchy Int
 }
@@ -39,10 +39,10 @@ model Coordinator {
 }
 
 model Subject {
-  id        Int     @id @default(autoincrement())
+  id        Int      @id @default(autoincrement())
   name      String
-  teacherId Int     @unique
-  teacher   Teacher @relation(fields: [teacherId], references: [id])
+  teacherId Int      @unique
+  teacher   Teacher? @relation(fields: [teacherId], references: [id])
 }
 
 model Pubs {
