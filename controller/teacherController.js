@@ -45,7 +45,8 @@ exports.create = async (req, res) => {
 exports.read = async (req, res) => {
   const teachers = await prisma.teacher.findMany({
     include: {
-      pubs: true
+      pubs: true,
+      subject: true
     },
   });
   res.status(200).json({ teachers });
