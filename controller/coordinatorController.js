@@ -37,7 +37,7 @@ exports.create = async (req, res) => {
 
 //#endregion
 
-//#region Read Teacher
+//#region Read Coordinator
 
 exports.read = async (req, res) => {
   const coordinator = await prisma.coordinator.findMany();
@@ -63,7 +63,7 @@ exports.readById = async (req, res) => {
 
 //#endregion
 
-//#region Update Teacher
+//#region Update Coordinator
 
 exports.update = async (req, res) => {
   const { id } = req.params
@@ -97,7 +97,7 @@ exports.update = async (req, res) => {
 
 //#endregion
 
-//#region Delete Teacher
+//#region Delete Coordinator
 
 exports.delete = async (req, res) => {
   const { id } = req.params;
