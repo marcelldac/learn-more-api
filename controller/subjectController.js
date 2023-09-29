@@ -4,13 +4,13 @@ const prisma = new PrismaClient();
 //#region Create Subject
 
 exports.create = async (req, res) => {
-  let { name, teacher } = req.body;
+  let { name, teacherId } = req.body;
 
   try {
     const subject = await prisma.subject.create({
       data: {
         name,
-        teacher
+        teacherId
       },
     });
     return res.status(201).json({ msg: subject });
