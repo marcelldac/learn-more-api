@@ -9,7 +9,6 @@ const healthRouter = require('./router/health');
 const loginRouter = require('./router/login');
 const subjectRouter = require('./router/subject');
 const teacherRouter = require('./router/teacher');
-const coordinatorRouter = require('./router/coordinator');
 const pubsRouter = require('./router/pubs');
 
 app.use(cors());
@@ -19,7 +18,6 @@ app.use('/login', loginRouter);
 app.use('/health', healthRouter);
 app.use('/subjects', subjectRouter);
 app.use('/teachers', teacherRouter);
-app.use('/coordinators', coordinatorRouter);
 app.use('/pubs', pubsRouter)
 
 app.listen(PORT, () => {
