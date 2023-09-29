@@ -17,7 +17,7 @@ npm run dev
 ```prisma
 DATABASE_URL="postgresql://<user>:<pass>@<server>:<port>/<db_name>?schema=<shema>"
 ```
-ex: DATABASE_URL="postgresql://postgres:django123@localhost:5432/learnmore?schema=public"
+ex: DATABASE_URL="postgresql://postgres:postgres@localhost:5432/learnmore?schema=public"
 
 # Iniciar o prisma:
 
