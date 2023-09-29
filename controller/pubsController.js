@@ -72,9 +72,7 @@ exports.update = async (req, res) => {
       id: newId
     },
     data: {
-      name,
-      email,
-      password
+      text
     },
   });
 
