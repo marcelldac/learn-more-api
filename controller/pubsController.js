@@ -75,8 +75,11 @@ exports.update = async (req, res) => {
       text
     },
   });
+  if (!publication) {
+    return res.status(500).send();
+  }
 
-  return res.status(200).json(publication);
+  return res.status(200).json({ publication });
 }
 
 //#endregion
