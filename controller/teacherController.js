@@ -101,7 +101,7 @@ exports.readById = async (req, res) => {
     return res.status(404).json({ msg: "Professor Não Encontrado" });
   };
 
-  return res.status(200).json(teacher);
+  return res.status(200).json({ teacher });
 }
 
 //#endregion
@@ -135,7 +135,7 @@ exports.update = async (req, res) => {
     },
   });
 
-  return res.status(200).json(teacher);
+  return res.status(200).json({ teacher });
 }
 
 //#endregion
@@ -158,7 +158,7 @@ exports.delete = async (req, res) => {
 
   await prisma.teacher.delete({ where: { id: newId } });
 
-  return res.status(204).json({ msg: 'Professor Removido' });
+  return res.status(204).send();
 }
 
 //#endregion
