@@ -76,7 +76,7 @@ exports.update = async (req, res) => {
     },
   });
   if (!publication) {
-    return res.status(500).send();
+    return res.status(404).send();
   }
 
   return res.status(200).json({ publication });
