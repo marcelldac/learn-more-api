@@ -40,6 +40,41 @@ exports.create = async (req, res) => {
 
 //#endregion
 
+//#region Create 'coordinator'
+
+exports.createCoord = async (req, res) => {
+  let { name, email, password } = req.body;
+
+  password = await bcrypt.hash(password, 8);
+
+  emailInUse = await prisma.teacher.findUnique({
+    where: {
+      email
+    },
+    include: {
+      pubs: true
+    }
+  });
+
+  if (emailInUse != null) {
+    return res.status(403).send();
+  }
+
+  try {
+    const teacher = await prisma.teacher.create({
+      data: {
+        name,
+        email,
+        password,
+        hierarchy: 2,
+      },
+    });
+    return res.status(201).json({ msg: teacher });
+  } catch (err) {
+    return res.status(500).json({ msg: err });
+  }
+}
+
 //#region Read Teacher
 
 exports.read = async (req, res) => {
