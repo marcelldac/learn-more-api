@@ -24,11 +24,5 @@ ex: DATABASE_URL="postgresql://postgres:postgres@localhost:5432/learnmore?schema
 # Iniciar o prisma:
 
 ```bash
-npx prisma generate
-```
-
-# Se não funcionar acima:
-
-```bash
 npx prisma init
 ```
