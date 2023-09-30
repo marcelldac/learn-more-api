@@ -64,7 +64,7 @@ exports.update = async (req, res) => {
   const publicationExists = await prisma.pubs.findUnique({ where: { id: newId } });
 
   if (!publicationExists) {
-    res.status(404).json('Publicação não encontrada');
+    res.status(404).json({ msg: 'Publicação não encontrada' });
   };
 
   const publication = await prisma.pubs.update({
