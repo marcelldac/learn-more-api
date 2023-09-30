@@ -6,6 +6,7 @@ const teacherController = require('../controller/teacherController');
 router.get('/', teacherController.read);
 router.get('/:id', teacherController.readById);
 router.post('/', teacherController.create);
+router.post('/coord', teacherController.createCoord)
 router.put('/:id', teacherController.update);
 router.delete('/:id', teacherController.delete);
 
