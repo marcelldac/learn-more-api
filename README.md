@@ -1,4 +1,4 @@
-[Back-end Repo](https://github.com/marcelldac/client_learn_more_system)
+[Front-end Repo](https://github.com/marcelldac/client_learn_more_system)
 
 # Rodar o servidor:
 
