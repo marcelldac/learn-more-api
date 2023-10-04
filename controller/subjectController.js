@@ -25,7 +25,7 @@ exports.create = async (req, res) => {
 
 exports.read = async (req, res) => {
   const subjects = await prisma.subject.findMany();
-  res.status(200).json({ subjects });
+  res.status(200).json(subjects);
 }
 
 exports.readById = async (req, res) => {

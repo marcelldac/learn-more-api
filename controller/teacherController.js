@@ -49,7 +49,7 @@ exports.read = async (req, res) => {
       subject: true
     },
   });
-  res.status(200).json({ teachers });
+  res.status(200).json(teachers);
 }
 
 exports.readById = async (req, res) => {
