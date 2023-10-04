@@ -15,9 +15,9 @@ exports.create = async (req, res) => {
         teacherId
       },
     });
-    return res.status(201).json({ msg: publication });
+    return res.status(201).json({publication});
   } catch (err) {
-    return res.status(500).json({ msg: err });
+    return res.status(500).json({err});
   }
 }
 

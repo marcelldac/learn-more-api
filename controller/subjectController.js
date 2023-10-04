@@ -13,9 +13,9 @@ exports.create = async (req, res) => {
         teacherId
       },
     });
-    return res.status(201).json({ msg: subject });
+    return res.status(201).json({subject});
   } catch (err) {
-    return res.status(500).json({ msg: err });
+    return res.status(500).json({err});
   }
 }
 
@@ -56,13 +56,13 @@ exports.update = async (req, res) => {
   const newId = parseInt(id);
 
   if (!newId) {
-    res.status(400).json('Id obrigatório');
+    res.status(400).send('Id obrigatório');
   };
 
   const subjectExists = await prisma.subject.findUnique({ where: { id: newId } });
 
   if (!subjectExists) {
-    res.status(404).json('Matéria não existente')
+    res.status(404).send('Matéria não existente')
   };
 
   const subject = await prisma.subject.update({
